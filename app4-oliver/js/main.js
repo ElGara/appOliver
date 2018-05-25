@@ -51,7 +51,7 @@ function onDeviceReady(){
 	 });
     
     $("#borrar").click(function(e){
-        deleteData(tx);
+        deletaForm();
     });
 }
 
@@ -183,7 +183,6 @@ function queryDetalleSuccess(tx, results) {
 		$("#nota").html("Nota: " +$.registro.nota);
 		$("#pweb").html("Pagina Web: " + result);
         $("#id_re").attr("value", $.id);
-        $("#borrar").attr("onclick", "deleteData()");
 
 		
 }
@@ -322,10 +321,14 @@ function newFormSuccess(tx, results) {
 /*
     Eliminar
 */
-
+function deletaForm(){
+    if(db != null){
+		db.transaction(deleteData, errorDB);
+	}
+}
 function deleteData(tx) {
     var idRe = document.getElementById('id_re');
     if(confirm("Desea Eliminar")){
-    tx.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], queryFormSuccess, errorDB);
+    tx.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], newFormSuccess, errorDB);
     }
 }
