@@ -148,7 +148,7 @@ $(document).on("pagebeforeshow", "#detalle", function(){
 
 
 function queryDBFindByID(tx) {
-    tx.executeSql('SELECT * FROM agenda_curso WHERE id='+$.id, [], queryDetalleSuccess, errorDB);
+    tx.executeSql('SELECT * FROM agenda_curso WHERE id=' + $.id, [], queryFormSuccess, errorDB);
 }
 
 function queryDetalleSuccess(tx, results) {
