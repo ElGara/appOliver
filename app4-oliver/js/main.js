@@ -230,8 +230,13 @@ function queryFormSuccess(tx, results) {
 		$("#ti_mail").val($.registro.email);
 		$("#ti_nota").val($.registro.nota);
 		$("#ti_pweb").val($.registro.pweb);
-		var info =  '<h3 id="nombre">'+$.registro.nombre+'</h3><div ><span id="num_tel">'+$.registro.telefono+'</span> <a href="#" data-role="button" data-inline="true" data-icon="phone" data-iconpos="notext" id="telefono">Llamar</a></div><div id="email"><span id="label_mail">'+registro.email+'</span><br><span id="nota">'+$.registro.nota+'</span> <br><span id="pweb"><a href="'+$.registro.pweb+'">'+$.registro.pweb+'</a></span><br>'+'<button id="openlink" onclick="boton()">Abrir Pagina</button><buttom id="borrar" onclick="" style="color:red;">Eliminar</buttom></div>';
-        informacion.innerHTML = info;
+    
+    //Pagina Dtalle
+		$("#nombre").val($.registro.nombre);
+		$("#num_tel").val($.registro.telefono);
+		$("#email").val($.registro.email);
+		$("#nota").val($.registro.nota);
+		$("#pweb").attr("href", $.registro.pweb);
     
 		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");	//$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
 }
