@@ -49,6 +49,10 @@ function onDeviceReady(){
 			saveNewForm();
 		 }
 	 });
+    
+    $("#borrar").click(function(e){
+        deleteData(tx);
+    });
 }
 
 
@@ -319,9 +323,9 @@ function newFormSuccess(tx, results) {
     Eliminar
 */
 
-function deleteData(txt) {
+function deleteData(tx) {
     var idRe = document.getElementById('id_re');
     if(confirm("Desea Eliminar")){
-    txt.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], queryFormSuccess, errorDB);
+    tx.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], queryFormSuccess, errorDB);
     }
 }
