@@ -158,13 +158,9 @@ function queryDetalleSuccess(tx, results) {
 		navigator.notification.alert("No hay detalles para ese elemento");
 	}
 
-
-
-	
 	$.registro = results.rows.item(0);
 	$("#categoria").html($.registro.categoria);
 
-	
 	var str2 = $.registro.num_tel;
 	var result2 = str2.link($.registro.num_tel);
 	var str = $.registro.pweb;
@@ -181,8 +177,8 @@ function queryDetalleSuccess(tx, results) {
 		$("#num_tel").html("Telefono: " +result2);
 		$("#label_mail").html("Mail: " + $.registro.email);
 		$("#nota").html("Nota: " +$.registro.nota);
-		$("#pweb").html("Pagina Web: " +result);
-
+		$("#pweb").html("Pagina Web: " + result);
+        $("#borrar").attr("onclick", "deleteData("+$.id+")");
 
 		
 }
@@ -206,7 +202,7 @@ $(document).on('pagebeforeshow', '#form', function(){
 });
 
 function queryDBFindByIDForm(tx) {
-    tx.executeSql('SELECT * FROM agenda_curso WHERE id='+$.id, [], queryFormSuccess, errorDB);
+    tx.executeSql('SELECT * FROM agenda_curso WHERE id=' + $.id, [], queryFormSuccess, errorDB);
 }
 
 function queryFormSuccess(tx, results) {
@@ -232,13 +228,7 @@ function queryFormSuccess(tx, results) {
 		$("#ti_pweb").val($.registro.pweb);
     
     //Pagina Dtalle
-		$("#nombre").val($.registro.nombre);
-		$("#num_tel").val($.registro.telefono);
-		$("#email").val($.registro.email);
-		$("#nota").val($.registro.nota);
-		$("#pweb").attr("href", $.registro.pweb);
-    
-		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");	//$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
+    //$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
 }
 $(document).on('pagebeforeshow', '#home', function(){ 
 	$.id = -1;
