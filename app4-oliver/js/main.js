@@ -178,7 +178,8 @@ function queryDetalleSuccess(tx, results) {
 		$("#label_mail").html("Mail: " + $.registro.email);
 		$("#nota").html("Nota: " +$.registro.nota);
 		$("#pweb").html("Pagina Web: " + result);
-        $("#borrar").attr("onclick", "deleteData("+$.id+")");
+        $("#id_re").attr("value", $.id);
+        $("#borrar").attr("onclick", "deleteData()");
 
 		
 }
@@ -318,6 +319,9 @@ function newFormSuccess(tx, results) {
     Eliminar
 */
 
-function deleteData(tx, results) {
-    
+function deleteData(txt) {
+    var idRe = document.getElementById('id_re');
+    if(confirm("Desea Eliminar")){
+    txt.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], queryFormSuccess, errorDB);
+    }
 }
