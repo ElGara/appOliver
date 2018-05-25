@@ -210,6 +210,7 @@ function queryDBFindByIDForm(tx) {
 }
 
 function queryFormSuccess(tx, results) {
+    var informacion = document.getElementById('informacion');
 	mkLog("Recibidos de la DB en vista Form" + results.rows.length + " registros");
 	if(results.rows.length == 0){
 		mkLog("No se han recibido registros para la vista form");
@@ -229,7 +230,9 @@ function queryFormSuccess(tx, results) {
 		$("#ti_mail").val($.registro.email);
 		$("#ti_nota").val($.registro.nota);
 		$("#ti_pweb").val($.registro.pweb);
-		
+		var info =  '<h3 id="nombre">'+$.registro.nombre+'</h3><div ><span id="num_tel">'+$.registro.telefono+'</span> <a href="#" data-role="button" data-inline="true" data-icon="phone" data-iconpos="notext" id="telefono">Llamar</a></div><div id="email"><span id="label_mail">'+registro.email+'</span><br><span id="nota">'+$.registro.nota+'</span> <br><span id="pweb"><a href="'+$.registro.pweb+'">'+$.registro.pweb+'</a></span><br>'+'<button id="openlink" onclick="boton()">Abrir Pagina</button><buttom id="borrar" onclick="" style="color:red;">Eliminar</buttom></div>';
+        informacion.innerHTML = info;
+    
 		$("#cat_"+$.registro.categoria).trigger("click").trigger("click");	//$("#cat_"+$.registro.categoria).attr("checked",true).checkboxradio("refresh");
 }
 $(document).on('pagebeforeshow', '#home', function(){ 
@@ -314,4 +317,12 @@ function newFormSuccess(tx, results) {
 	
 	
 	$.mobile.changePage("#home");
+}
+
+/*
+    Eliminar
+*/
+
+function deleteData(tx, results) {
+    
 }
