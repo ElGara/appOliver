@@ -327,7 +327,7 @@ function deletaForm(){
 	}
 }
 function deleteData(tx) {
-    var idRe = document.getElementById('id_re');
+    var idRe =$("#id_re").val(); //document.getElementById('id_re');
     if(confirm("Desea Eliminar")){
     tx.executeSql("DELETE FROM agenda_curso WHERE id = " + idRe.value, [], newFormSuccess, errorDB);
     }
